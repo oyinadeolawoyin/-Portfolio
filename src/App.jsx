@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { ExternalLink, Github, MessageSquare, Monitor, Smartphone, Code, Heart, Users } from 'lucide-react';
+import { ExternalLink, Github, MessageSquare, Monitor, Smartphone, Code, Heart, Users, Menu, X } from 'lucide-react';
 
 export default function Portfolio() {
   const [activeFilter, setActiveFilter] = useState('all');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const projects = [
     {
@@ -96,14 +97,65 @@ export default function Portfolio() {
         <div className="container mx-auto px-4 py-4">
           <div className="flex justify-between items-center">
             <h1 className="text-2xl font-bold text-white">Oyinade Olawoyin</h1>
-            <div className="flex gap-6">
+            
+            {/* Desktop Menu */}
+            <div className="hidden md:flex gap-6">
               <a href="#about" className="text-purple-200 hover:text-white transition-colors">About</a>
               <a href="#projects" className="text-purple-200 hover:text-white transition-colors">Projects</a>
               <a href="#community" className="text-purple-200 hover:text-white transition-colors">Community</a>
               <a href="#services" className="text-purple-200 hover:text-white transition-colors">Services</a>
               <a href="#contact" className="text-purple-200 hover:text-white transition-colors">Contact</a>
             </div>
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="md:hidden text-white"
+            >
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
           </div>
+
+          {/* Mobile Menu */}
+          {mobileMenuOpen && (
+            <div className="md:hidden mt-4 pb-4 space-y-3">
+              <a 
+                href="#about" 
+                onClick={() => setMobileMenuOpen(false)}
+                className="block text-purple-200 hover:text-white transition-colors"
+              >
+                About
+              </a>
+              <a 
+                href="#projects" 
+                onClick={() => setMobileMenuOpen(false)}
+                className="block text-purple-200 hover:text-white transition-colors"
+              >
+                Projects
+              </a>
+              <a 
+                href="#community" 
+                onClick={() => setMobileMenuOpen(false)}
+                className="block text-purple-200 hover:text-white transition-colors"
+              >
+                Community
+              </a>
+              <a 
+                href="#services" 
+                onClick={() => setMobileMenuOpen(false)}
+                className="block text-purple-200 hover:text-white transition-colors"
+              >
+                Services
+              </a>
+              <a 
+                href="#contact" 
+                onClick={() => setMobileMenuOpen(false)}
+                className="block text-purple-200 hover:text-white transition-colors"
+              >
+                Contact
+              </a>
+            </div>
+          )}
         </div>
       </nav>
 
