@@ -91,22 +91,71 @@ export default function Portfolio() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
-      {/* Hero Section */}
-      <div className="container mx-auto px-4 py-16">
+      {/* Navigation Header */}
+      <nav className="sticky top-0 z-50 bg-slate-900/95 backdrop-blur-sm border-b border-purple-500/30 shadow-lg">
+        <div className="container mx-auto px-4 py-4">
+          <div className="flex justify-between items-center">
+            <h1 className="text-2xl font-bold text-white">Oyinade Olawoyin</h1>
+            <div className="flex gap-6">
+              <a href="#about" className="text-purple-200 hover:text-white transition-colors">About</a>
+              <a href="#projects" className="text-purple-200 hover:text-white transition-colors">Projects</a>
+              <a href="#community" className="text-purple-200 hover:text-white transition-colors">Community</a>
+              <a href="#services" className="text-purple-200 hover:text-white transition-colors">Services</a>
+              <a href="#contact" className="text-purple-200 hover:text-white transition-colors">Contact</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      {/* About/Introduction Section */}
+      <section id="about" className="container mx-auto px-4 py-16">
+        <div className="max-w-5xl mx-auto">
+          <div className="flex flex-col md:flex-row items-center gap-12 bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-purple-500/20">
+            {/* Avatar Placeholder */}
+            <div className="w-64 h-64 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex-shrink-0 shadow-2xl border-4 border-white/10 flex items-center justify-center overflow-hidden">
+              {/* Replace this with your actual image */}
+              <div className="text-white text-6xl">👤</div>
+              {/* When you have your image, use: <img src="your-image.jpg" alt="Oyinade Olawoyin" className="w-full h-full object-cover" /> */}
+            </div>
+            
+            {/* Introduction Text */}
+            <div className="flex-1">
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+                Hi, I'm Oyinade Olawoyin
+              </h2>
+              <p className="text-xl text-purple-200 mb-6">
+                A web developer and creative storyteller
+              </p>
+              
+              <div className="space-y-4 text-purple-100 leading-relaxed">
+                <p>
+                  I build responsive websites and web applications using React, JavaScript, and modern web technologies. But I'm more than just code—I'm a writer who explores human emotions and psychology through storytelling, and a songwriter who finds solace in music.
+                </p>
+                <p>
+                  I'm also the founder of <a href="https://thevoices.netlify.app/" target="_blank" rel="noopener noreferrer" className="text-purple-400 hover:text-purple-300 underline">The Voices</a>, a platform built for fictional writers and poets to connect with readers, grow their audience, and build a supportive creative community.
+                </p>
+                <p>
+                  When I'm not coding or writing, you'll find me daydreaming—because creativity is how I bring my imagination to life.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Projects Section */}
+      <section id="projects" className="container mx-auto px-4 py-16">
         <div className="text-center mb-16">
           <h1 className="text-5xl font-bold text-white mb-4">
-            Welcome to My Portfolio
+            My Projects
           </h1>
-          <p className="text-xl text-purple-200 mb-2">
-            Learning & Building Web Applications
-          </p>
-          <p className="text-lg text-purple-300">
-            Exploring React, JavaScript, and Full-Stack Development
+          <p className="text-xl text-purple-200">
+            A collection of websites I've built while learning and growing
           </p>
         </div>
 
         {/* Learning Community Section */}
-        <div className="max-w-3xl mx-auto mb-16 bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl p-8 shadow-2xl">
+        <div id="community" className="max-w-3xl mx-auto mb-16 bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl p-8 shadow-2xl">
           <div className="flex items-center gap-3 mb-4">
             <Users className="w-8 h-8 text-white" />
             <h2 className="text-3xl font-bold text-white">Join My Learning Community</h2>
@@ -254,7 +303,7 @@ export default function Portfolio() {
         </div>
 
         {/* Services Section */}
-        <div className="max-w-3xl mx-auto mt-16 mb-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 shadow-2xl">
+        <div id="services" className="max-w-3xl mx-auto mt-16 mb-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 shadow-2xl">
           <div className="text-center mb-6">
             <h2 className="text-3xl font-bold text-white mb-4">Need a Website?</h2>
             <p className="text-white text-lg leading-relaxed mb-4">
@@ -306,12 +355,15 @@ export default function Portfolio() {
         </div>
 
         {/* Footer */}
-        <div className="text-center mt-16 text-purple-200">
-          <p className="text-lg">
+        <footer id="contact" className="text-center mt-16 text-purple-200">
+          <p className="text-lg mb-2">
             Built with passion while learning • More projects coming soon!
           </p>
-        </div>
-      </div>
+          <p className="text-sm text-purple-300">
+            © 2025 Oyinade Olawoyin. All rights reserved.
+          </p>
+        </footer>
+      </section>
     </div>
   );
 }
