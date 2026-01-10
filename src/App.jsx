@@ -1,108 +1,73 @@
 import React, { useState } from 'react';
-import { ExternalLink, MessageSquare, Monitor, Smartphone, Code, Heart, Users, Menu, X, Briefcase, GraduationCap } from 'lucide-react';
+import { ExternalLink, MessageSquare, Menu, X, Instagram, Send, Mail } from 'lucide-react';
 
 export default function Portfolio() {
-  const [activeMode, setActiveMode] = useState(null); // null, 'hire', or 'learn'
-  const [activeFilter, setActiveFilter] = useState('all');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const projects = [
     {
-      title: 'Aria Nova',
-      url: 'https://aria-nova.netlify.app/',
-      tech: 'React',
-      responsive: true,
+      title: 'The Voices',
+      url: 'https://thevoices-gamma.vercel.app/',
+      tech: 'Full Stack (React, Node.js, PostgreSQL)',
+      description: 'A complete platform for fictional writers and poets to connect with readers, featuring user authentication, story publishing, and community engagement.',
       featured: true,
-      description: 'Modern singer landing page with animations'
+      screenshot: '/voices.png'
     },
     {
       title: 'Brew Haven',
-      url: 'https://brew-haveb.netlify.app/',
+      url: 'https://brew-haven-gamma.vercel.app/',
       tech: 'React + localStorage',
-      responsive: true,
+      description: 'Coffee ordering website with shopping cart functionality, order management, and persistent storage.',
       featured: true,
-      description: 'Coffee ordering website with cart system'
+      screenshot: '/brewhaven.png'
     },
     {
-      title: 'Ease Shopping',
-      url: 'https://easeshopping.netlify.app/',
-      tech: 'React + API',
-      responsive: true,
-      featured: true,
-      description: 'E-commerce platform with API integration'
+      title: 'Aria Nova',
+      url: 'https://aria-nova.vercel.app/',
+      tech: 'React',
+      description: 'Modern singer landing page featuring smooth animations and contemporary design aesthetics.',
+      screenshot: '/aria.png'
     },
     {
       title: 'Savanna Shuffle',
-      url: 'https://savannashuffle.netlify.app/',
+      url: 'https://savanna-shuffle.vercel.app/',
       tech: 'React',
-      responsive: true,
-      featured: true,
-      description: 'Interactive memory game application'
-    },
-    {
-      title: 'Birthday Box',
-      url: 'https://birthdaybox.netlify.app/',
-      tech: 'HTML & CSS',
-      responsive: true,
-      description: 'Responsive celebration page'
+      description: 'Interactive memory game application with engaging gameplay mechanics and responsive interface.',
+      screenshot: '/savannah.png'
     },
     {
       title: 'CV Application',
-      url: 'https://cvapplication-odin.netlify.app/',
+      url: 'https://cv-application-rust-alpha.vercel.app/',
       tech: 'React',
-      responsive: true,
-      description: 'Resume builder application'
+      description: 'Dynamic resume builder allowing users to create and customize professional CVs.',
+      screenshot: '/cv.png'
     },
     {
-      title: 'The Voices',
-      url: 'https://thevoices.netlify.app/',
-      tech: 'Full Stack',
-      responsive: true,
-      featured: true,
-      description: 'Platform for fictional writers and poets'
-    },
-    {
-      title: 'Battleship',
-      url: 'https://battleship-odin-project.netlify.app/',
-      tech: 'JavaScript',
-      responsive: false,
-      description: 'Classic battleship game'
-    },
-    {
-      title: 'Weather App',
-      url: 'https://odin-weather-project.netlify.app/',
-      tech: 'JavaScript + API',
-      responsive: false,
-      description: 'Weather forecast application'
-    },
-    {
-      title: 'Calculator',
-      url: 'https://odin-calculator-foundation-project.netlify.app/',
-      tech: 'JavaScript',
-      responsive: false,
-      description: 'Functional calculator app'
+      title: 'Birthday Box',
+      url: 'https://birthday-box-ashen.vercel.app/',
+      tech: 'HTML & CSS',
+      description: 'Responsive celebration page with creative design and animations.',
+      screenshot: '/birthday.png'
     }
   ];
 
-  const filteredProjects = projects.filter(project => {
-    if (activeFilter === 'all') return true;
-    if (activeFilter === 'responsive') return project.responsive;
-    if (activeFilter === 'desktop') return !project.responsive;
-    return true;
-  });
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
-      {/* Navigation Header */}
-      <nav className="sticky top-0 z-50 bg-slate-900/95 backdrop-blur-sm border-b border-purple-500/30 shadow-lg">
+    <div className="min-h-screen bg-black text-white">
+      {/* Navigation */}
+      <nav className="fixed top-0 w-full z-50 bg-black/95 backdrop-blur-sm border-b border-white/10">
         <div className="container mx-auto px-4 py-4">
           <div className="flex justify-between items-center">
-            <h1 className="text-2xl font-bold text-white">Oyinade Olawoyin</h1>
+            <h1 className="text-xl md:text-2xl font-bold tracking-tight">
+              Oyinade Olawoyin
+            </h1>
             
-            <div className="hidden md:flex gap-6">
-              <a href="#about" className="text-purple-200 hover:text-white transition-colors">About</a>
-              <a href="#work" className="text-purple-200 hover:text-white transition-colors">Work With Me</a>
-              <a href="#contact" className="text-purple-200 hover:text-white transition-colors">Contact</a>
+            <div className="hidden md:flex items-center gap-8">
+              <a href="#about" className="text-gray-400 hover:text-white transition-colors text-sm font-medium">About</a>
+              <a href="#projects" className="text-gray-400 hover:text-white transition-colors text-sm font-medium">Projects</a>
+              <a href="#services" className="text-gray-400 hover:text-white transition-colors text-sm font-medium">Services</a>
+              <a href="#contact" className="bg-white text-black px-6 py-2 rounded-full font-semibold hover:bg-gray-100 transition-all text-sm">
+                Contact
+              </a>
             </div>
 
             <button
@@ -114,424 +79,274 @@ export default function Portfolio() {
           </div>
 
           {mobileMenuOpen && (
-            <div className="md:hidden mt-4 pb-4 space-y-3">
-              <a href="#about" onClick={() => setMobileMenuOpen(false)} className="block text-purple-200 hover:text-white transition-colors">About</a>
-              <a href="#work" onClick={() => setMobileMenuOpen(false)} className="block text-purple-200 hover:text-white transition-colors">Work With Me</a>
-              <a href="#contact" onClick={() => setMobileMenuOpen(false)} className="block text-purple-200 hover:text-white transition-colors">Contact</a>
+            <div className="md:hidden mt-6 pb-4 space-y-4">
+              <a href="#about" onClick={() => setMobileMenuOpen(false)} className="block text-gray-400 hover:text-white transition-colors">About</a>
+              <a href="#projects" onClick={() => setMobileMenuOpen(false)} className="block text-gray-400 hover:text-white transition-colors">Projects</a>
+              <a href="#services" onClick={() => setMobileMenuOpen(false)} className="block text-gray-400 hover:text-white transition-colors">Services</a>
+              <a href="#contact" onClick={() => setMobileMenuOpen(false)} className="block text-gray-400 hover:text-white transition-colors">Contact</a>
             </div>
           )}
         </div>
       </nav>
 
-      {/* About Section */}
-      <section id="about" className="container mx-auto px-4 py-16">
-        <div className="max-w-5xl mx-auto">
-          <div className="flex flex-col md:flex-row items-center gap-12 bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-purple-500/20">
-          <div className="w-48 h-48 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex-shrink-0 shadow-2xl border-4 border-white/10 flex items-center justify-center overflow-hidden">
-            <img
-              src="/pfp.jpg"
-              alt="Oyin – Full Stack Developer"
-              className="w-full h-full object-cover"
-            />
-          </div>
-            <div className="flex-1">
-              <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                Hi, I'm Oyinade Olawoyin
+      {/* Hero Section */}
+      <section className="pt-32 pb-20 px-4">
+        <div className="container mx-auto max-w-5xl">
+          <div className="flex flex-col md:flex-row items-center gap-12">
+            <div className="w-40 h-40 md:w-48 md:h-48 rounded-full bg-white flex-shrink-0 overflow-hidden border-4 border-white/10">
+              <img
+                src="/pfp.jpg"
+                alt="Oyinade Olawoyin"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            
+            <div className="flex-1 text-center md:text-left">
+              <h2 className="text-4xl md:text-6xl font-bold mb-4 tracking-tight">
+                Full-Stack Developer
               </h2>
-              <p className="text-xl text-purple-200 mb-6">
-                Full-stack developer & creative storyteller
+              <p className="text-xl md:text-2xl text-gray-400 mb-6">
+                Building responsive websites & web applications
               </p>
-              
-              <div className="space-y-4 text-purple-100 leading-relaxed">
-                <p>
-                  I build responsive websites and web applications using React, JavaScript, and modern full-stack technologies. But I'm more than just code—I'm a writer who explores human emotions and psychology through storytelling, and a songwriter who finds solace in music.
-                </p>
-                <p>
-                  I'm also the founder of <a href="https://thevoices.netlify.app/" target="_blank" rel="noopener noreferrer" className="text-purple-400 hover:text-purple-300 underline">The Voices</a>, a platform built for fictional writers and poets to connect with readers, grow their audience, and build a supportive creative community.
-                </p>
-                <p>
-                  When I'm not coding or writing, you'll find me daydreaming—where all my creative ideas are born.
-                </p>
+              <div className="flex flex-wrap gap-3 justify-center md:justify-start">
+                <span className="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-sm">React</span>
+                <span className="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-sm">JavaScript</span>
+                <span className="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-sm">Node.js</span>
+                <span className="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-sm">PostgreSQL</span>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Work With Me Section */}
-      <section id="work" className="container mx-auto px-4 py-16">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-5xl font-bold text-white mb-6 text-center">Work With Me</h2>
-          <p className="text-xl text-purple-200 text-center mb-12">Choose how you'd like to collaborate</p>
+      {/* About Section */}
+      <section id="about" className="py-20 px-4 bg-white/5">
+        <div className="container mx-auto max-w-4xl">
+          <h3 className="text-3xl md:text-4xl font-bold mb-8 text-center">About Me</h3>
+          <div className="space-y-6 text-gray-300 leading-relaxed text-lg">
+            <p>
+              I build responsive websites and web applications using React, JavaScript, and modern full-stack technologies. But I'm more than just code—I'm a writer who explores human emotions and psychology through storytelling, and a songwriter who finds solace in music.
+            </p>
+            <p>
+              I'm also the founder of <a href="https://thevoices.netlify.app/" target="_blank" rel="noopener noreferrer" className="text-white hover:underline font-medium">The Voices</a>, a platform built for fictional writers and poets to connect with readers, grow their audience, and build a supportive creative community.
+            </p>
+            <p>
+              When I'm not coding or writing, you'll find me daydreaming—where all my creative ideas are born.
+            </p>
+          </div>
+        </div>
+      </section>
 
-          {/* Mode Selection Buttons */}
-          {!activeMode && (
-            <div className="grid md:grid-cols-2 gap-8 mb-16">
-              <button
-                onClick={() => setActiveMode('hire')}
-                className="bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl p-8 text-left hover:from-blue-700 hover:to-purple-700 transition-all transform hover:scale-105 shadow-2xl"
+      {/* Projects Section */}
+      <section id="projects" className="py-20 px-4">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center mb-16">
+            <h3 className="text-3xl md:text-4xl font-bold mb-4">Featured Projects</h3>
+            <p className="text-xl text-gray-400">All projects are fully responsive and mobile-friendly</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {projects.map((project, index) => (
+              <div
+                key={index}
+                className="group bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-white/20 transition-all"
               >
-                <Briefcase className="w-12 h-12 text-white mb-4" />
-                <h3 className="text-3xl font-bold text-white mb-3">Need a Website?</h3>
-                <p className="text-blue-100 text-lg mb-4">
-                  Let me build your portfolio, landing page, or web application
-                </p>
-                <div className="text-white font-semibold flex items-center gap-2">
-                  View My Work & Services <ExternalLink className="w-4 h-4" />
-                </div>
-              </button>
-
-              <button
-                onClick={() => setActiveMode('learn')}
-                className="bg-gradient-to-br from-purple-600 to-pink-600 rounded-2xl p-8 text-left hover:from-purple-700 hover:to-pink-700 transition-all transform hover:scale-105 shadow-2xl"
-              >
-                <GraduationCap className="w-12 h-12 text-white mb-4" />
-                <h3 className="text-3xl font-bold text-white mb-3">Learn With Me</h3>
-                <p className="text-purple-100 text-lg mb-4">
-                  Join my structured learning path from HTML to full-stack React
-                </p>
-                <div className="text-white font-semibold flex items-center gap-2">
-                  Explore Learning Path <ExternalLink className="w-4 h-4" />
-                </div>
-              </button>
-            </div>
-          )}
-
-          {/* Back Button */}
-          {activeMode && (
-            <div className="text-center mb-8">
-              <button
-                onClick={() => setActiveMode(null)}
-                className="text-purple-300 hover:text-white transition-colors font-semibold"
-              >
-                ← Back to options
-              </button>
-            </div>
-          )}
-
-          {/* HIRE MODE - Projects + Services */}
-          {activeMode === 'hire' && (
-            <>
-              <div className="mb-16">
-                <h3 className="text-4xl font-bold text-white mb-4 text-center">My Projects</h3>
-                <p className="text-xl text-purple-200 text-center mb-8">See what I can build for you</p>
-
-                <div className="flex justify-center gap-4 mb-12 flex-wrap">
-                  <button
-                    onClick={() => setActiveFilter('all')}
-                    className={`px-6 py-3 rounded-full font-semibold transition-all ${
-                      activeFilter === 'all' ? 'bg-white text-purple-900 shadow-lg scale-105' : 'bg-white/20 text-white hover:bg-white/30'
-                    }`}
-                  >
-                    All Projects
-                  </button>
-                  <button
-                    onClick={() => setActiveFilter('responsive')}
-                    className={`px-6 py-3 rounded-full font-semibold transition-all flex items-center gap-2 ${
-                      activeFilter === 'responsive' ? 'bg-white text-purple-900 shadow-lg scale-105' : 'bg-white/20 text-white hover:bg-white/30'
-                    }`}
-                  >
-                    <Smartphone className="w-4 h-4" />
-                    Responsive
-                  </button>
-                  <button
-                    onClick={() => setActiveFilter('desktop')}
-                    className={`px-6 py-3 rounded-full font-semibold transition-all flex items-center gap-2 ${
-                      activeFilter === 'desktop' ? 'bg-white text-purple-900 shadow-lg scale-105' : 'bg-white/20 text-white hover:bg-white/30'
-                    }`}
-                  >
-                    <Monitor className="w-4 h-4" />
-                    Desktop Only
-                  </button>
+                {/* Screenshot */}
+                <div className="w-full aspect-video bg-white/5 border border-white/10 rounded-lg mb-6 flex items-center justify-center overflow-hidden">
+                  <img 
+                    src={project.screenshot} 
+                    alt={`${project.title} screenshot`}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-                  {filteredProjects.map((project, index) => (
-                    <div
-                      key={index}
-                      className={`bg-white/10 backdrop-blur-sm rounded-xl p-6 hover:bg-white/20 transition-all transform hover:scale-105 hover:shadow-2xl ${
-                        project.featured ? 'ring-2 ring-yellow-400' : ''
-                      }`}
-                    >
-                      {project.featured && (
-                        <div className="flex items-center gap-1 text-yellow-400 text-sm font-semibold mb-2">
-                          <Heart className="w-4 h-4 fill-current" />
-                          Featured
-                        </div>
-                      )}
-                      
-                      <h3 className="text-2xl font-bold text-white mb-2">{project.title}</h3>
-                      <p className="text-purple-200 mb-3">{project.description}</p>
-                      
-                      <div className="flex items-center gap-2 mb-4">
-                        <span className="px-3 py-1 bg-purple-500/50 text-white text-sm rounded-full">{project.tech}</span>
-                        {project.responsive ? (
-                          <span className="px-3 py-1 bg-green-500/50 text-white text-sm rounded-full flex items-center gap-1">
-                            <Smartphone className="w-3 h-3" />
-                            Responsive
-                          </span>
-                        ) : (
-                          <span className="px-3 py-1 bg-orange-500/50 text-white text-sm rounded-full flex items-center gap-1">
-                            <Monitor className="w-3 h-3" />
-                            Desktop
-                          </span>
-                        )}
-                      </div>
-                      
-                      <a href={project.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-white hover:text-purple-300 font-semibold transition-colors">
-                        View Project
-                        <ExternalLink className="w-4 h-4" />
-                      </a>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Services */}
-              <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 shadow-2xl">
-                <h3 className="text-3xl font-bold text-white mb-6 text-center">Let's Build Your Website</h3>
-                <div className="max-w-3xl mx-auto">
-                  <p className="text-white text-lg leading-relaxed mb-6 text-center">
-                    I'm available to help bring your ideas to life! Whether you need a personal portfolio, a business landing page, or a full web application, I'd love to work with you.
-                  </p>
-
-                  <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 mb-6">
-                    <h4 className="text-xl font-semibold text-white mb-4">What I Can Build:</h4>
-                    <ul className="space-y-2 text-white">
-                      <li className="flex items-start gap-2">
-                        <span className="text-green-300 mt-1">✓</span>
-                        <span>Responsive websites that work on all devices</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-green-300 mt-1">✓</span>
-                        <span>Portfolio websites to showcase your work</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-green-300 mt-1">✓</span>
-                        <span>Landing pages for businesses or products</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-green-300 mt-1">✓</span>
-                        <span>Interactive React applications</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-green-300 mt-1">✓</span>
-                        <span>Full-stack projects with backend integration</span>
-                      </li>
-                    </ul>
+                {project.featured && (
+                  <div className="inline-block px-3 py-1 bg-white text-black text-xs font-semibold rounded-full mb-3">
+                    Featured
                   </div>
-
-                  <div className="text-center">
-                    <a
-                      href="mailto:YOUR_EMAIL_HERE"
-                      className="inline-flex items-center gap-2 bg-white text-blue-700 px-8 py-4 rounded-full font-bold text-lg hover:bg-blue-50 transition-all transform hover:scale-105 shadow-lg"
-                    >
-                      <MessageSquare className="w-6 h-6" />
-                      Let's Discuss Your Project
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </>
-          )}
-
-          {/* LEARN MODE - Learning Path Only */}
-          {activeMode === 'learn' && (
-            <div className="max-w-4xl mx-auto">
-              <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl p-8 shadow-2xl mb-8">
-                <div className="flex items-center gap-3 mb-6">
-                  <Users className="w-10 h-10 text-white" />
-                  <h3 className="text-3xl font-bold text-white">Guided Learning Community</h3>
-                </div>
+                )}
                 
-                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 mb-6">
-                  <p className="text-white text-lg leading-relaxed mb-4">
-                    Learn web development with clear structure and guidance. No scattered YouTube videos, no endless confusion—just a focused path forward.
-                  </p>
-                  <p className="text-white text-lg leading-relaxed mb-4">
-                    I guide you through each stage, help you when you're stuck, and keep you motivated. You learn with a community of others on the same journey.
-                  </p>
-                  <p className="text-white text-lg leading-relaxed">
-                    <strong>Pick the stage you need</strong> - you don't have to start from the beginning. Jump in wherever makes sense for your goals.
-                  </p>
-                </div>
-              </div>
-
-              {/* Learning Path */}
-              <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-purple-500/20 mb-8">
-                <h4 className="text-3xl font-bold text-white mb-4 text-center">Choose Your Stage</h4>
-                <p className="text-purple-200 text-center mb-8">Pick any stage based on where you are. One-time payment per stage.</p>
+                <h4 className="text-2xl font-bold mb-3 group-hover:text-gray-300 transition-colors">
+                  {project.title}
+                </h4>
                 
-                <div className="space-y-6 mb-8">
-                  <div className="bg-gradient-to-br from-purple-600/20 to-blue-600/20 rounded-xl p-6 border border-purple-400/30">
-                    <div className="flex justify-between items-start mb-4">
-                      <div>
-                        <h5 className="text-2xl font-bold text-white mb-1">Stage 1: Foundation</h5>
-                        <p className="text-purple-200">HTML + CSS</p>
-                      </div>
-                      <div className="text-right">
-                        <div className="text-3xl font-bold text-white">$15</div>
-                        <p className="text-purple-200 text-sm">starting price</p>
-                      </div>
-                    </div>
-                    <p className="text-purple-100 mb-3">Build your first responsive website and understand the web</p>
-                    <ul className="space-y-2 text-purple-100 text-sm">
-                      <li className="flex items-start gap-2">
-                        <span className="text-green-400">✓</span>
-                        <span>Clean markup and styles</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-green-400">✓</span>
-                        <span>Responsive design basics</span>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div className="bg-gradient-to-br from-blue-600/20 to-purple-600/20 rounded-xl p-6 border border-blue-400/30">
-                    <div className="flex justify-between items-start mb-4">
-                      <div>
-                        <h5 className="text-2xl font-bold text-white mb-1">Stage 2: JavaScript Core</h5>
-                        <p className="text-blue-200">Interactive websites</p>
-                      </div>
-                      <div className="text-right">
-                        <div className="text-3xl font-bold text-white">$25</div>
-                        <p className="text-blue-200 text-sm">starting price</p>
-                      </div>
-                    </div>
-                    <p className="text-blue-100 mb-3">Write logic confidently and prepare for frameworks</p>
-                    <ul className="space-y-2 text-blue-100 text-sm">
-                      <li className="flex items-start gap-2">
-                        <span className="text-green-400">✓</span>
-                        <span>How the browser thinks</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-green-400">✓</span>
-                        <span>Build dynamic features</span>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div className="bg-gradient-to-br from-pink-600/20 to-purple-600/20 rounded-xl p-6 border border-pink-400/30">
-                    <div className="flex justify-between items-start mb-4">
-                      <div>
-                        <h5 className="text-2xl font-bold text-white mb-1">Stage 3: React Frontend</h5>
-                        <p className="text-pink-200">Component-based interfaces</p>
-                      </div>
-                      <div className="text-right">
-                        <div className="text-3xl font-bold text-white">$40</div>
-                        <p className="text-pink-200 text-sm">starting price</p>
-                      </div>
-                    </div>
-                    <p className="text-pink-100 mb-3">Build like modern frontend developers—state, props, hooks, the works</p>
-                    <ul className="space-y-2 text-pink-100 text-sm">
-                      <li className="flex items-start gap-2">
-                        <span className="text-green-400">✓</span>
-                        <span>Real component-based apps</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-green-400">✓</span>
-                        <span>Professional development workflow</span>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div className="bg-gradient-to-br from-slate-600/20 to-purple-600/20 rounded-xl p-6 border border-slate-400/30">
-                    <div className="flex justify-between items-start mb-4">
-                      <div>
-                        <h5 className="text-2xl font-bold text-white mb-1">Stage 4: Backend (Optional)</h5>
-                        <p className="text-slate-200">Full-stack completion</p>
-                      </div>
-                      <div className="text-right">
-                        <div className="text-3xl font-bold text-white">$50</div>
-                        <p className="text-slate-200 text-sm">starting price</p>
-                      </div>
-                    </div>
-                    <p className="text-slate-100 mb-3">APIs, authentication, and connecting frontend to backend</p>
-                    <ul className="space-y-2 text-slate-100 text-sm">
-                      <li className="flex items-start gap-2">
-                        <span className="text-green-400">✓</span>
-                        <span>Database management</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-green-400">✓</span>
-                        <span>See the full picture</span>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div className="bg-gradient-to-r from-green-600/20 to-emerald-600/20 rounded-xl p-6 border border-green-400/40">
-                    <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4">
-                      <div>
-                        <h5 className="text-2xl font-bold text-white mb-1">Complete Path (Bundle)</h5>
-                        <p className="text-green-200">All stages: Foundation + JS + React + Backend</p>
-                      </div>
-                      <div className="text-center md:text-right">
-                        <div className="text-4xl font-bold text-green-300">$100</div>
-                        <p className="text-green-200 text-sm">save $30</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* What You Get */}
-                <div className="bg-white/5 rounded-xl p-6 mb-6">
-                  <h4 className="text-xl font-semibold text-white mb-4">What You Get:</h4>
-                  <ul className="space-y-3 text-purple-100">
-                    <li className="flex items-start gap-3">
-                      <span className="text-purple-400 mt-1">→</span>
-                      <span>Structured learning path - no scattered YouTube chaos</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="text-purple-400 mt-1">→</span>
-                      <span>Help when you're stuck - debugging, explanations, direction</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="text-purple-400 mt-1">→</span>
-                      <span>Motivation & accountability to keep you going</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="text-purple-400 mt-1">→</span>
-                      <span>Community support from others learning the same topics</span>
-                    </li>
-                  </ul>
-                </div>
-
-                {/* Requirements */}
-                <div className="bg-white/5 rounded-xl p-6 mb-6">
-                  <h4 className="text-xl font-semibold text-white mb-4">Requirements:</h4>
-                  <ul className="space-y-3 text-purple-100">
-                    <li className="flex items-start gap-3">
-                      <span className="text-purple-400 text-xl">💻</span>
-                      <span>A laptop or desktop computer</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <span className="text-purple-400 text-xl">🎯</span>
-                      <span>Willingness to practice consistently</span>
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="text-center">
-                  <a
-                    href="YOUR_DISCORD_LINK_HERE"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:from-purple-700 hover:to-pink-700 transition-all transform hover:scale-105 shadow-lg"
-                  >
-                    <MessageSquare className="w-6 h-6" />
-                    Join Discord for Full Details & Enrollment
-                  </a>
-                </div>
+                <p className="text-gray-400 mb-4 leading-relaxed">
+                  {project.description}
+                </p>
+                
+                <p className="text-sm text-gray-500 mb-4 font-medium">
+                  {project.tech}
+                </p>
+                
+                <a 
+                  href={project.url} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="inline-flex items-center gap-2 text-white hover:text-gray-300 font-semibold transition-colors group"
+                >
+                  View Project
+                  <ExternalLink className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                </a>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section id="services" className="py-20 px-4 bg-white/5">
+        <div className="container mx-auto max-w-4xl">
+          <div className="text-center mb-12">
+            <h3 className="text-3xl md:text-4xl font-bold mb-4">Work With Me</h3>
+            <p className="text-xl text-gray-400">Let's bring your ideas to life</p>
+          </div>
+
+          <div className="bg-white text-black rounded-2xl p-8 md:p-12">
+            <h4 className="text-2xl md:text-3xl font-bold mb-6">What I Can Build For You</h4>
+            
+            <ul className="space-y-4 mb-8 text-lg">
+              <li className="flex items-start gap-3">
+                <span className="text-2xl">✓</span>
+                <span>Responsive websites that work perfectly on all devices</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-2xl">✓</span>
+                <span>Portfolio websites to showcase your work professionally</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-2xl">✓</span>
+                <span>Landing pages for businesses or products</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-2xl">✓</span>
+                <span>Interactive React applications with modern features</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-2xl">✓</span>
+                <span>Full-stack projects with backend integration</span>
+              </li>
+            </ul>
+
+            <div className="bg-black/5 rounded-xl p-6 mb-8">
+              <h5 className="font-bold text-xl mb-3">Investment Range</h5>
+              <p className="text-gray-700 text-lg leading-relaxed">
+                Most projects range from <span className="font-bold">₦30,000 to ₦60,000</span> depending on scope, features, and timeline. Complex full-stack applications may fall outside this range based on specific requirements.
+              </p>
+              <p className="text-gray-700 mt-3">
+                Every project is unique, so I provide custom quotes tailored to your needs.
+              </p>
+              <p className="text-gray-700 mt-3">
+                <span className="font-semibold">Includes:</span> Free hosting setup, mobile-responsive design, and professional delivery.
+              </p>
             </div>
-          )}
+
+            <div className="text-center">
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-2 bg-black text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-900 transition-all"
+              >
+                <MessageSquare className="w-5 h-5" />
+                Get a Free Quote
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="py-20 px-4">
+        <div className="container mx-auto max-w-4xl">
+          <div className="text-center mb-12">
+            <h3 className="text-3xl md:text-4xl font-bold mb-4">Let's Connect</h3>
+            <p className="text-xl text-gray-400">Ready to start your project? Get in touch</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+            {/* Email */}
+            <a
+              href="mailto:oyinadeolwaoyin@proton.me"
+              className="flex items-center gap-4 bg-white/5 border border-white/10 rounded-xl p-6 hover:bg-white/10 hover:border-white/20 transition-all group"
+            >
+              <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-white/20 transition-all">
+                <Mail className="w-6 h-6" />
+              </div>
+              <div>
+                <div className="font-semibold mb-1">Email</div>
+                <div className="text-sm text-gray-400 break-all">oyinadeolwaoyin@proton.me</div>
+              </div>
+            </a>
+
+            {/* WhatsApp */}
+            <a
+              href="https://wa.me/YOUR_WHATSAPP_NUMBER"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-4 bg-white/5 border border-white/10 rounded-xl p-6 hover:bg-white/10 hover:border-white/20 transition-all group"
+            >
+              <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-white/20 transition-all">
+                <MessageSquare className="w-6 h-6" />
+              </div>
+              <div>
+                <div className="font-semibold mb-1">WhatsApp</div>
+                <div className="text-sm text-gray-400">Chat with me directly</div>
+              </div>
+            </a>
+
+            {/* Instagram */}
+            <a
+              href="https://instagram.com/YOUR_INSTAGRAM_HANDLE"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-4 bg-white/5 border border-white/10 rounded-xl p-6 hover:bg-white/10 hover:border-white/20 transition-all group"
+            >
+              <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-white/20 transition-all">
+                <Instagram className="w-6 h-6" />
+              </div>
+              <div>
+                <div className="font-semibold mb-1">Instagram</div>
+                <div className="text-sm text-gray-400">@your_handle</div>
+              </div>
+            </a>
+
+            {/* Discord */}
+            <a
+              href="https://discord.gg/YOUR_DISCORD_LINK"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-4 bg-white/5 border border-white/10 rounded-xl p-6 hover:bg-white/10 hover:border-white/20 transition-all group"
+            >
+              <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-white/20 transition-all">
+                <Send className="w-6 h-6" />
+              </div>
+              <div>
+                <div className="font-semibold mb-1">Discord</div>
+                <div className="text-sm text-gray-400">Join my community</div>
+              </div>
+            </a>
+          </div>
+
+          <div className="text-center bg-white/5 border border-white/10 rounded-xl p-8">
+            <h4 className="text-2xl font-bold mb-3">Prefer Email?</h4>
+            <p className="text-gray-400 mb-6">
+              Send me a message about your project and I'll get back to you within 24 hours
+            </p>
+            <a
+              href="mailto:oyinadeolwaoyin@proton.me"
+              className="inline-flex items-center gap-2 bg-white text-black px-8 py-4 rounded-full font-bold hover:bg-gray-100 transition-all"
+            >
+              <Mail className="w-5 h-5" />
+              Send an Email
+            </a>
+          </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer id="contact" className="text-center py-16 text-purple-200">
-        <p className="text-lg mb-2">Built with passion • More projects coming soon</p>
-        <p className="text-sm text-purple-300">© 2025 Oyinade Olawoyin. All rights reserved.</p>
+      <footer className="border-t border-white/10 py-12 px-4 text-center text-gray-500">
+        <div className="container mx-auto max-w-4xl">
+          <p className="mb-2">Built with passion • Oyinade Olawoyin</p>
+          <p className="text-sm">© 2026 All rights reserved</p>
+        </div>
       </footer>
     </div>
   );
