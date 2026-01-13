@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ExternalLink, MessageSquare, Menu, X, Instagram, Send, Mail } from 'lucide-react';
+import { ExternalLink, MessageSquare, Menu, X, Facebook, Send, Mail, Github } from 'lucide-react';
 
 export default function Portfolio() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -93,12 +93,8 @@ export default function Portfolio() {
       <section className="pt-32 pb-20 px-4">
         <div className="container mx-auto max-w-5xl">
           <div className="flex flex-col md:flex-row items-center gap-12">
-            <div className="w-40 h-40 md:w-48 md:h-48 rounded-full bg-white flex-shrink-0 overflow-hidden border-4 border-white/10">
-              <img
-                src="/pfp.jpg"
-                alt="Oyinade Olawoyin"
-                className="w-full h-full object-cover"
-              />
+            <div className="w-40 h-40 md:w-48 md:h-48 rounded-full bg-white flex-shrink-0 overflow-hidden border-4 border-white/10 flex items-center justify-center">
+              <span className="text-black text-6xl md:text-7xl font-bold">Oyin</span>
             </div>
             
             <div className="flex-1 text-center md:text-left">
@@ -228,15 +224,12 @@ export default function Portfolio() {
             </ul>
 
             <div className="bg-black/5 rounded-xl p-6 mb-8">
-              <h5 className="font-bold text-xl mb-3">Investment Range</h5>
+              <h5 className="font-bold text-xl mb-3">Let's Discuss Your Project</h5>
               <p className="text-gray-700 text-lg leading-relaxed">
-                Most projects range from <span className="font-bold">₦30,000 to ₦60,000</span> depending on scope, features, and timeline. Complex full-stack applications may fall outside this range based on specific requirements.
+                Every project is unique, and I provide custom quotes based on your specific needs, timeline, and features required.
               </p>
               <p className="text-gray-700 mt-3">
-                Every project is unique, so I provide custom quotes tailored to your needs.
-              </p>
-              <p className="text-gray-700 mt-3">
-                <span className="font-semibold">Includes:</span> Free hosting setup, mobile-responsive design, and professional delivery.
+                <span className="font-semibold">What's Included:</span> Free hosting setup, mobile-responsive design, professional delivery, and ongoing support.
               </p>
             </div>
 
@@ -294,23 +287,22 @@ export default function Portfolio() {
 
             {/* Instagram */}
             <a
-              href="https://instagram.com/YOUR_INSTAGRAM_HANDLE"
+              href="https://web.facebook.com/profile.php?id=61569281842345"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-4 bg-white/5 border border-white/10 rounded-xl p-6 hover:bg-white/10 hover:border-white/20 transition-all group"
             >
               <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-white/20 transition-all">
-                <Instagram className="w-6 h-6" />
+                <Facebook className="w-6 h-6" />
               </div>
               <div>
-                <div className="font-semibold mb-1">Instagram</div>
-                <div className="text-sm text-gray-400">@your_handle</div>
+                <div className="font-semibold mb-1">Facebook</div>
               </div>
             </a>
 
             {/* Discord */}
             <a
-              href="https://discord.gg/YOUR_DISCORD_LINK"
+              href="https://discord.com/channels/@me"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-4 bg-white/5 border border-white/10 rounded-xl p-6 hover:bg-white/10 hover:border-white/20 transition-all group"
@@ -320,7 +312,7 @@ export default function Portfolio() {
               </div>
               <div>
                 <div className="font-semibold mb-1">Discord</div>
-                <div className="text-sm text-gray-400">Join my community</div>
+                <div className="text-sm text-gray-400">@oyinade0115</div>
               </div>
             </a>
           </div>
@@ -345,7 +337,7 @@ export default function Portfolio() {
       <footer className="border-t border-white/10 py-12 px-4 text-center text-gray-500">
         <div className="container mx-auto max-w-4xl">
           <p className="mb-2">Built with passion • Oyinade Olawoyin</p>
-          <p className="text-sm">© 2026 All rights reserved</p>
+          <p className="text-sm">© 2025 All rights reserved</p>
         </div>
       </footer>
     </div>
