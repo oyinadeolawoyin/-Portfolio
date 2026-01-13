@@ -337,7 +337,7 @@ export default function Portfolio() {
       <footer className="border-t border-white/10 py-12 px-4 text-center text-gray-500">
         <div className="container mx-auto max-w-4xl">
           <p className="mb-2">Built with passion • Oyinade Olawoyin</p>
-          <p className="text-sm">© 2025 All rights reserved</p>
+          <p className="text-sm">© 2026 All rights reserved</p>
         </div>
       </footer>
     </div>
